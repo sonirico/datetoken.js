@@ -1,13 +1,11 @@
-enum Snap {
+export enum Snap {
   beginning = '/',
   end = '@',
 }
 
-enum Sign {
+export enum Sign {
   plus = '+',
   minus = '-',
 }
 
-const NOW = 'now';
-
-export { Sign, Snap, NOW };
+export const NOW = 'now';

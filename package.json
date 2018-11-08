@@ -2,10 +2,11 @@
   "name": "datetoken",
   "version": "0.1.0",
   "description": "Parse relative datetime tokens into date objects",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "test": "test"
   },
   "scripts": {
     "build": "tsc",

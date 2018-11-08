@@ -11,12 +11,17 @@ re-evaluation
 
 Some common examples of relative tokens:
 
-- Today: `now/d`, `now`
-- Yesterday: `now-d/d`, `now-d@d`
-- Last 24 hours: `now-1d`, `now`. Also writable as: `now-24h`, `now`
-- Last business week: `now-w/bw`, `now-w@bw`
-- This business week: `now/bw`, `now@bw`
-- Last month: `now-1M/M`, `now-1M@M`
+| Preset name        | From         | To           |
+|--------------------|--------------|--------------|
+| Today              | `now/d`      | `now`        |
+| Yesterday          | `now-d/d`    | `now-d@d`    |
+| Last 24 hours      | `now-24h`    | `now`        |
+| Last business week | `now-w/bw`   | `now-w@bw`   |
+| This business week | `now/bw`     | `now@bw`     |
+| Last month         | `now-1M/M`   | `now-1M@M`   |
+| Next week          | `now+w/w`    | `now+w@w`    |
+| Custom range       | `now+w-2d/h` | `now+2M-10h` |
+
 
 As you may have noticed, token follow a pattern:
 

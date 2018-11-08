@@ -1,22 +1,11 @@
-import * as parser from './parser';
-import { NOW, Sign } from './constants';
-
-export class TokenModifier {
-  public sign: Sign;
-  public amount: number;
-  public unit: string;
-
-  constructor(sign: Sign, amount: number, unit: string) {
-    this.sign = sign;
-    this.amount = amount;
-    this.unit = unit;
-  }
-}
+import { NOW } from '../constants';
+import { TokenModifier } from './TokenModifier';
+import { parseToken } from '../parser/parsetoken';
+import { operations as opMap } from './operations';
 
 export class Token {
   public static fromString(token: string = NOW) {
-    const data = parser.deserializeToken(token);
-    return new Token(data.values, data.snapTo, data.snapUnit);
+    return parseToken(token);
   }
 
   public readonly modifiers: TokenModifier[];
@@ -55,7 +44,9 @@ export class Token {
   }
 
   public clearModifiers(): void {
-    while (this.modifiers.length) this.modifiers.pop();
+    while (this.modifiers.length) {
+      this.modifiers.pop();
+    }
   }
 
   public toString(): string {
@@ -74,7 +65,6 @@ export class Token {
 
   public toDate(): Date {
     let res = new Date();
-    const opMap = parser.operationsMap;
 
     if (this.isCalculated) {
       res = this.modifiers.reduce((r, v) => opMap[v.sign][v.unit](r, v.amount), res);

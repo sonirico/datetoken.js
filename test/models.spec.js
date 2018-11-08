@@ -1,11 +1,8 @@
-const models = require('../dist/models');
-const constants = require('../dist/constants');
+const {Token, TokenModifier} = require('../lib/models');
+const {Sign} = require('../lib/constants');
+
 const chai = require('chai');
 const expect = chai.expect;
-
-const Token = models.Token;
-const TokenModifier = models.TokenModifier;
-
 const sinon = require('sinon');
 const nowFaked = 153840255000; // Mon, 01 Oct 2018 14:03:01 GMT
 
@@ -24,7 +21,7 @@ describe('Token', function () {
         it('should modifiy the token', function () {
           let actual = Token.fromString('now');
           expect(actual.modifiers).to.have.lengthOf(0)
-          actual.addModifier(new TokenModifier(constants.Sign.minus, 2, 'w'))
+          actual.addModifier(new TokenModifier(Sign.minus, 2, 'w'))
           expect(actual.toString()).to.be.equal('now-2w');
           expect(actual.modifiers).to.have.lengthOf(1)
         })
