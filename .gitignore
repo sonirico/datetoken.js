@@ -1,0 +1,8 @@
+node_modules/
+*.map
+.idea/
+.vscode/
+*.swp
+dist/
+lib/
+
