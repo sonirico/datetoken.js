@@ -2,6 +2,8 @@ import { Sign, Snap, NOW } from '../constants';
 import { Token } from '../models/Token';
 import { TokenModifier } from '../models/TokenModifier';
 
+export const includes = (target: string, searchString: string) => target.indexOf(searchString) > -1;
+
 export function parseToken(token: string = NOW): Token {
   const regex = /^(?:now)?(?:([+\-])(?:(\d+)?([smhdwM])))*(?:[@\/]([smhdwM]|(?:bw)))?$/g;
   const matches = regex.exec(token);
@@ -12,7 +14,7 @@ export function parseToken(token: string = NOW): Token {
     throw error;
   }
 
-  if (token.includes('-') || token.includes('+')) {
+  if (includes(token, Sign.minus) || includes(token, Sign.plus)) {
     const modifierRegex = /([+\-])(\d+)?([smhdwM])?/g;
     let modifierMatches = modifierRegex.exec(token);
 
@@ -35,8 +37,8 @@ export function parseToken(token: string = NOW): Token {
     }
   }
 
-  const snapFrom = token.includes(Snap.beginning);
-  const snapTo = token.includes(Snap.end);
+  const snapFrom = includes(token, Snap.beginning);
+  const snapTo = includes(token, Snap.end);
 
   if (snapFrom || snapTo) {
     const snapRegex = /[\/@]([smhdwM]|(?:bw))/;

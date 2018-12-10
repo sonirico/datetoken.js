@@ -1,8 +1,8 @@
 import * as dateFn from 'date-fns';
-import { Snap } from '../constants';
+import { Sign, Snap } from '../constants';
 
 export const operations: any = {
-  '+': {
+  [Sign.plus]: {
     s: dateFn.addSeconds,
     m: dateFn.addMinutes,
     h: dateFn.addHours,
@@ -10,7 +10,7 @@ export const operations: any = {
     w: dateFn.addWeeks,
     M: dateFn.addMonths,
   },
-  '-': {
+  [Sign.minus]: {
     s: dateFn.subSeconds,
     m: dateFn.subMinutes,
     h: dateFn.subHours,
