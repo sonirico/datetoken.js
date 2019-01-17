@@ -1,4 +1,4 @@
-# Datetoken [![Build Status](https://travis-ci.org/sonirico/datetoken.svg?branch=master)](https://travis-ci.org/sonirico/datetoken) [![PyPI versions](https://img.shields.io/badge/python-2.7%20|%203.6-blue.svg)](https://pypi.org/project/datetoken/)
+# Datetoken
 
 ## Motivation
 
