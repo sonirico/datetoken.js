@@ -25,6 +25,28 @@ describe('Token model', () => {
     expect(model.isModified).toBeTruthy();
   });
 
+  it('toJSON()', () => {
+    const model = new TokenModel([
+      new NowExpression(new Token(TokenType.NOW, 'now')),
+      new ModifierExpression(new Token(TokenType.PLUS, '+'), 2, '+', 'h'),
+      new ModifierExpression(new Token(TokenType.MINUS, '-'), 1, '-', 's'),
+      new SnapExpression(new Token(TokenType.SLASH, '/'), 'bw', '/'),
+      new ModifierExpression(new Token(TokenType.MINUS, '-'), 99, '-', 'M'),
+      new ModifierExpression(new Token(TokenType.MINUS, '-'), 2, '-', 'm'),
+      new SnapExpression(new Token(TokenType.AT, '@'), 'd', '@'),
+    ]);
+    const expected = [
+      { type: 'now' },
+      { type: 'amount', amount: 2, modifier: 'h', operator: '+' },
+      { type: 'amount', amount: 1, modifier: 's', operator: '-' },
+      { type: 'snap', modifier: 'bw', operator: '/' },
+      { type: 'amount', amount: 99, modifier: 'M', operator: '-' },
+      { type: 'amount', amount: 2, modifier: 'm', operator: '-' },
+      { type: 'snap', modifier: 'd', operator: '@' },
+    ];
+    expect(model.toJSON()).toStrictEqual(expected);
+  });
+
   it('<now> toDate()', () => {
     const model = new TokenModel([new NowExpression(new Token(TokenType.NOW, 'now'))]);
     expect(model.isSnapped).toBeFalsy();

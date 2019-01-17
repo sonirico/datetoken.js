@@ -7,6 +7,8 @@ export interface Expression {
   operate(date?: Date): Date;
 
   toString(): string;
+
+  toJSON(): object;
 }
 
 export class NowExpression implements Expression {
@@ -20,8 +22,12 @@ export class NowExpression implements Expression {
     return date;
   }
 
-  public toString() {
+  public toString(): string {
     return this.token.literal;
+  }
+
+  public toJSON(): object {
+    return { type: 'now' };
   }
 }
 
@@ -77,8 +83,12 @@ export class ModifierExpression implements Expression {
     return date;
   }
 
-  public toString() {
+  public toString(): string {
     return `${this.operator}${this.amount}${this.modifier}`;
+  }
+
+  public toJSON(): object {
+    return { type: 'amount', amount: this.amount, modifier: this.modifier, operator: this.operator };
   }
 }
 
@@ -139,8 +149,12 @@ export class SnapExpression implements Expression {
     return date;
   }
 
-  public toString() {
+  public toString(): string {
     return `${this.operator}${this.modifier}`;
+  }
+
+  public toJSON(): object {
+    return { type: 'snap', modifier: this.modifier, operator: this.operator };
   }
 }
 
