@@ -1,0 +1,48 @@
+export enum TokenType {
+  END = '',
+  ILLEGAL = 'ILLEGAL',
+  // Operators
+  PLUS = '+',
+  MINUS = '-',
+  SLASH = '/',
+  AT = '@',
+  // Identifiers
+  NUMBER = 'NUMBER',
+  MODIFIER = 'MODIFIER',
+  // keywords
+  NOW = 'NOW',
+}
+
+interface Keyword {
+  [key: string]: TokenType;
+}
+
+const keywords = {
+  now: TokenType.NOW,
+  s: TokenType.MODIFIER,
+  m: TokenType.MODIFIER,
+  h: TokenType.MODIFIER,
+  d: TokenType.MODIFIER,
+  w: TokenType.MODIFIER,
+  M: TokenType.MODIFIER,
+  bw: TokenType.MODIFIER,
+} as Keyword;
+
+export class Token {
+  public type: TokenType;
+  public literal: string;
+
+  constructor(tokenType: TokenType, tokenLiteral: string) {
+    this.type = tokenType;
+    this.literal = tokenLiteral;
+  }
+}
+
+export function lookupIdentifier(ident: string): TokenType {
+  if (keywords.hasOwnProperty(ident)) {
+    return keywords[ident];
+  }
+  return TokenType.MODIFIER;
+}
+
+export const NOW = new Token(TokenType.NOW, 'now');

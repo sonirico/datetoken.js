@@ -1,6 +1,6 @@
 {
   "name": "datetoken",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Parse relative datetime tokens into date objects",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -9,9 +9,10 @@
     "test": "test"
   },
   "scripts": {
-    "build": "tsc",
+    "clean": "rm -rf ./models ./utils ./lexer ./parser ./ast ./exceptions ./token",
+    "build": "npm run clean && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "exit 0; tslint -p tsconfig.json",
+    "lint": "tslint -p tsconfig.json",
     "postversion": "git push && git push --tags",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",
+    "@types/sinon": "^7.0.3",
     "chai": "^4.2.0",
     "jest": "^23.6.0",
     "prettier": "^1.15.3",
