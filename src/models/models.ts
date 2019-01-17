@@ -1,4 +1,4 @@
-import { Expression, ModifierExpression, SnapExpression } from '../ast';
+import { Expression, ModifierExpression, NowExpression, SnapExpression } from '../ast';
 import { InvalidTokenError } from '../exceptions';
 import { Lexer } from '../lexer';
 import { Parser } from '../parser';
@@ -52,5 +52,9 @@ export class Token {
 
   public toString(): string {
     return this.expressionNodes.map(n => n.toString()).join('');
+  }
+
+  public toJSON(): object[] {
+    return this.nodes.map(node => node.toJSON());
   }
 }
