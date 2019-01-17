@@ -1,1 +1,1 @@
-export * from './parsetoken';
+export * from './parser';
