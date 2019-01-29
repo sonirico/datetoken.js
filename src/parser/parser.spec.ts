@@ -45,9 +45,28 @@ describe('Parser', () => {
     const input = 'now*2n';
     const lexer = new Lexer(input);
     const parser = new Parser(lexer);
-    const nodes = parser.parse();
+    parser.parse();
     const errors = parser.getErrors();
-    expect(errors.length).toBe(1);
+    expect(errors.length).toBe(2);
     expect(errors[0]).toBe('Illegal operator: "*"');
+    expect(errors[1]).toBe('Illegal operator: "n"');
+  });
+
+  it('parse random string', () => {
+    const input = 'yoquesetioxd';
+    const lexer = new Lexer(input);
+    const parser = new Parser(lexer);
+    parser.parse();
+    const errors = parser.getErrors();
+    expect(errors[0]).toBe('Illegal operator: "yoquesetioxd"');
+  });
+
+  it('parse nothing', () => {
+    const input = undefined;
+    const lexer = new Lexer(input);
+    const parser = new Parser(lexer);
+    parser.parse();
+    const errors = parser.getErrors();
+    expect(errors[0]).toBe('Invalid token');
   });
 });
