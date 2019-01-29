@@ -24,6 +24,10 @@ export class Parser {
   }
 
   public parse(): Expression[] {
+    if (this.lexer.isInvalid()) {
+      this.addError('Invalid token');
+    }
+
     const nodes: Expression[] = [];
     this.nextToken();
     this.nextToken();

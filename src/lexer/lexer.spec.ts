@@ -2,6 +2,20 @@ import { TokenType } from '../token';
 import { Lexer } from './lexer';
 
 describe('Lexer', () => {
+  it('Lexer no word', () => {
+    const input = undefined;
+    const lexer = new Lexer(input);
+    expect(lexer.isInvalid()).toBeTruthy();
+  });
+
+  it('Lexer invalid word', () => {
+    const input = 'yoquesetio';
+    const lexer = new Lexer(input);
+    const actual = lexer.nextToken();
+    expect(actual.type).toBe(TokenType.ILLEGAL);
+    expect(actual.literal).toBe('yoquesetio');
+  });
+
   it('Lexer.nextToken tokenize ok', () => {
     const input = 'now-1h/h@M+2w/bw-3s-49d/m';
     const lexer = new Lexer(input);

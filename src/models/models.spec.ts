@@ -95,6 +95,18 @@ describe('Token model', () => {
   });
 
   describe('fromString()', () => {
+    it('with no input yields error', () => {
+      expect(() => {
+        TokenModel.fromString('');
+      }).toThrowError('Invalid token');
+    });
+
+    it('with random input yields error', () => {
+      expect(() => {
+        TokenModel.fromString('yoquesetioxd');
+      }).toThrowError('Illegal operator: "yoquesetioxd"');
+    });
+
     it('now is optional', () => {
       const token = TokenModel.fromString('/d');
       expect(token.isSnapped).toBeTruthy();

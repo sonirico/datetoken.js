@@ -9,16 +9,29 @@ function isLetter(payload: string): boolean {
 }
 
 export class Lexer {
+  private readonly invalid: boolean;
   private position: number;
   private readPosition: number;
   private readonly input: string;
   private currentChar: string;
 
-  constructor(input = '') {
-    this.position = this.readPosition = 0;
-    this.input = input.trim();
-    this.currentChar = '';
-    this.readChar();
+  constructor(input: string = '') {
+    this.invalid = !input || 'string' !== typeof input || input.trim().length < 2;
+
+    if (this.invalid) {
+      this.position = this.readPosition = 0;
+      this.input = '';
+      this.currentChar = '';
+    } else {
+      this.position = this.readPosition = 0;
+      this.input = input.trim();
+      this.currentChar = '';
+      this.readChar();
+    }
+  }
+
+  public isInvalid() {
+    return this.invalid;
   }
 
   public nextToken(): Token {

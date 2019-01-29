@@ -42,7 +42,7 @@ export function lookupIdentifier(ident: string): TokenType {
   if (keywords.hasOwnProperty(ident)) {
     return keywords[ident];
   }
-  return TokenType.MODIFIER;
+  return TokenType.ILLEGAL;
 }
 
 export const NOW = new Token(TokenType.NOW, 'now');
