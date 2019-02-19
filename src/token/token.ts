@@ -26,6 +26,12 @@ const keywords = {
   w: TokenType.MODIFIER,
   M: TokenType.MODIFIER,
   bw: TokenType.MODIFIER,
+  mon: TokenType.MODIFIER,
+  tue: TokenType.MODIFIER,
+  thu: TokenType.MODIFIER,
+  fri: TokenType.MODIFIER,
+  sat: TokenType.MODIFIER,
+  sun: TokenType.MODIFIER,
 } as Keyword;
 
 export class Token {
