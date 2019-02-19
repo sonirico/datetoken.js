@@ -129,7 +129,12 @@ export class SnapExpression implements Expression {
           case 'sat':
           case 'sun': {
             const weekDayOrdinal = daysOfWeek.indexOf(this.modifier);
-            return dateFn.startOfWeek(date, { weekStartsOn: weekDayOrdinal });
+            const todayOrdinal = dateFn.getDay(date);
+            // Unfortunately JavaScript gets modular algebra wrong.
+            // -1 mod 7 ≡ 6, but for JavaScript, -1 % 7 = -1. So to get a 6,
+            // you have to do stuff like this.
+            const delta = ((todayOrdinal - weekDayOrdinal) % 7 + 7) % 7;
+            return dateFn.subDays(date, delta);
           }
           case 'M':
             return dateFn.startOfMonth(date);
@@ -162,8 +167,13 @@ export class SnapExpression implements Expression {
           case 'fri':
           case 'sat':
           case 'sun': {
-            const weekDayOrdinal = (daysOfWeek.indexOf(this.modifier) + 1) % 7;
-            return dateFn.endOfWeek(date, { weekStartsOn: weekDayOrdinal });
+            const weekDayOrdinal = daysOfWeek.indexOf(this.modifier);
+            const todayOrdinal = dateFn.getDay(date);
+            // Unfortunately JavaScript gets modular algebra wrong.
+            // -1 mod 7 ≡ 6, but for JavaScript, -1 % 7 = -1. So to get a 6,
+            // you have to do stuff like this.
+            const delta = ((weekDayOrdinal - todayOrdinal) % 7 + 7) % 7;
+            return dateFn.addDays(date, delta);
           }
         }
         break;

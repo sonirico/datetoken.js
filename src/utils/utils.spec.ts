@@ -216,41 +216,53 @@ describe('utils.tokenToDate', () => {
   describe('using a day of the week as a snap', () => {
     // Guide for readers: 2018-06-18 was Monday.
 
-    it('start of last Friday', () => {
+    it('last Friday', () => {
       const actual = format(tokenToDate('now/fri'), dateFormat);
-      const expected = '2018-06-15T00:00:00+00:00';
+      const expected = '2018-06-15T08:39:07+00:00';
       expect(actual).toBe(expected);
     });
 
-    it('start of last Tuesday', () => {
+    it('last Tuesday', () => {
       const actual = format(tokenToDate('now/tue'), dateFormat);
-      const expected = '2018-06-12T00:00:00+00:00';
+      const expected = '2018-06-12T08:39:07+00:00';
       expect(actual).toBe(expected);
     });
 
-    it('start of last Monday', () => {
+    it('last Monday', () => {
       // Since today is Monday, it should snap to today.
       const actual = format(tokenToDate('now/mon'), dateFormat);
-      const expected = '2018-06-18T00:00:00+00:00';
+      const expected = '2018-06-18T08:39:07+00:00';
       expect(actual).toBe(expected);
     });
 
-    it('end of next Friday', () => {
+    it('next Friday', () => {
       const actual = format(tokenToDate('now@fri'), dateFormat);
-      const expected = '2018-06-22T23:59:59+00:00';
+      const expected = '2018-06-22T08:39:07+00:00';
       expect(actual).toBe(expected);
     });
 
-    it('end of next Sunday', () => {
+    it('next Sunday', () => {
       const actual = format(tokenToDate('now@sun'), dateFormat);
-      const expected = '2018-06-24T23:59:59+00:00';
+      const expected = '2018-06-24T08:39:07+00:00';
       expect(actual).toBe(expected);
     });
 
-    it('end of next Monday', () => {
+    it('next Monday', () => {
       // Today is Monday, so it should snap to today.
       const actual = format(tokenToDate('now@mon'), dateFormat);
-      const expected = '2018-06-18T23:59:59+00:00';
+      const expected = '2018-06-18T08:39:07+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('snaps to the start of the day when combined', () => {
+      const actual = format(tokenToDate('now-w/mon/d'), dateFormat);
+      const expected = '2018-06-11T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('snaps to the end of the day when combined', () => {
+      const actual = format(tokenToDate('now-w@fri@d'), dateFormat);
+      const expected = '2018-06-15T23:59:59+00:00';
       expect(actual).toBe(expected);
     });
   });
