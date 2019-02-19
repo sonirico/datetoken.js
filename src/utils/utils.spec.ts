@@ -213,6 +213,48 @@ describe('utils.tokenToDate', () => {
     });
   });
 
+  describe('using a day of the week as a snap', () => {
+    // Guide for readers: 2018-06-18 was Monday.
+
+    it('start of last Friday', () => {
+      const actual = format(tokenToDate('now/fri'), dateFormat);
+      const expected = '2018-06-15T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('start of last Tuesday', () => {
+      const actual = format(tokenToDate('now/tue'), dateFormat);
+      const expected = '2018-06-12T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('start of last Monday', () => {
+      // Since today is Monday, it should snap to today.
+      const actual = format(tokenToDate('now/mon'), dateFormat);
+      const expected = '2018-06-18T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('end of next Friday', () => {
+      const actual = format(tokenToDate('now@fri'), dateFormat);
+      const expected = '2018-06-22T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('end of next Sunday', () => {
+      const actual = format(tokenToDate('now@sun'), dateFormat);
+      const expected = '2018-06-24T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('end of next Monday', () => {
+      // Today is Monday, so it should snap to today.
+      const actual = format(tokenToDate('now@mon'), dateFormat);
+      const expected = '2018-06-18T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+  });
+
   it('now-1w+3d-6m', () => {
     const actual = tokenToDate('now-1w+3d-6m');
     const delta = (-(7 * 24 * 3600) + 3 * 24 * 3600 - 6 * 60) * 1000;

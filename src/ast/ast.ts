@@ -1,6 +1,8 @@
 import * as dateFn from 'date-fns';
 import { Token, TokenType } from '../token';
 
+const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
 export interface Expression {
   token: Token;
 
@@ -119,6 +121,16 @@ export class SnapExpression implements Expression {
           case 'w':
           case 'bw':
             return dateFn.startOfWeek(date);
+          case 'mon':
+          case 'tue':
+          case 'wed':
+          case 'thu':
+          case 'fri':
+          case 'sat':
+          case 'sun': {
+            const weekDayOrdinal = daysOfWeek.indexOf(this.modifier);
+            return dateFn.startOfWeek(date, { weekStartsOn: weekDayOrdinal });
+          }
           case 'M':
             return dateFn.startOfMonth(date);
         }
@@ -142,6 +154,16 @@ export class SnapExpression implements Expression {
               return date;
             }
             return dateFn.endOfDay(dateFn.addDays(dateFn.startOfWeek(date), 5));
+          }
+          case 'mon':
+          case 'tue':
+          case 'wed':
+          case 'thu':
+          case 'fri':
+          case 'sat':
+          case 'sun': {
+            const weekDayOrdinal = (daysOfWeek.indexOf(this.modifier) + 1) % 7;
+            return dateFn.endOfWeek(date, { weekStartsOn: weekDayOrdinal });
           }
         }
         break;
@@ -168,7 +190,10 @@ export namespace AmountModifiers {
   }
 }
 export namespace SnapModifiers {
-  const values: string[] = ['s', 'm', 'h', 'd', 'w', 'bw', 'M'];
+  const values: string[] = [
+    's', 'm', 'h', 'd', 'w', 'bw', 'M',
+    'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun',
+  ];
 
   export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
 
