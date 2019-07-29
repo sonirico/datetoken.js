@@ -1,5 +1,11 @@
-import { Token } from '../models';
+import {Datetoken} from '../evaluator';
 
-export function tokenToDate(token: string, at?: Date): Date {
-  return Token.fromString(token, at).toDate();
+export function tokenToDate(token: string, at?: Date, tz?: string): Date {
+  const datetoken = new Datetoken({token, at, tz});
+  return datetoken.toDate();
+}
+
+export function tokenToUTCDate(token: string, at?: Date, tz?: string): Date {
+  const datetoken = new Datetoken({token, at, tz});
+  return datetoken.toUTCDate();
 }

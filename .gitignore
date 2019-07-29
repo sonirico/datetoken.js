@@ -3,13 +3,13 @@ node_modules/
 .idea/
 .vscode/
 *.swp
-dist/
-lib/
-models/
-utils/
-parser/
-lexer/
-ast/
-exceptions/
-token/
+./dist/
+./lib/
+./models/
+./utils/
+./parser/
+./lexer/
+./ast/
+./exceptions/
+./token/
 
