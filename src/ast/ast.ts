@@ -133,7 +133,7 @@ export class SnapExpression implements Expression {
             // Unfortunately JavaScript gets modular algebra wrong.
             // -1 mod 7 ≡ 6, but for JavaScript, -1 % 7 = -1. So to get a 6,
             // you have to do stuff like this.
-            const delta = ((todayOrdinal - weekDayOrdinal) % 7 + 7) % 7;
+            const delta = (((todayOrdinal - weekDayOrdinal) % 7) + 7) % 7;
             return dateFn.subDays(date, delta);
           }
           case 'M':
@@ -172,7 +172,7 @@ export class SnapExpression implements Expression {
             // Unfortunately JavaScript gets modular algebra wrong.
             // -1 mod 7 ≡ 6, but for JavaScript, -1 % 7 = -1. So to get a 6,
             // you have to do stuff like this.
-            const delta = ((weekDayOrdinal - todayOrdinal) % 7 + 7) % 7;
+            const delta = (((weekDayOrdinal - todayOrdinal) % 7) + 7) % 7;
             return dateFn.addDays(date, delta);
           }
         }
@@ -200,10 +200,7 @@ export namespace AmountModifiers {
   }
 }
 export namespace SnapModifiers {
-  const values: string[] = [
-    's', 'm', 'h', 'd', 'w', 'bw', 'M',
-    'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun',
-  ];
+  const values: string[] = ['s', 'm', 'h', 'd', 'w', 'bw', 'M', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
   export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
 
