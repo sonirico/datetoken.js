@@ -1,4 +1,4 @@
-# Datetoken
+# Datetoken [![CircleCI](https://circleci.com/gh/sonirico/datetoken.js.svg?style=svg)](https://circleci.com/gh/sonirico/datetoken.js)
 
 ## Motivation
 
