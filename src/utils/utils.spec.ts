@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import * as sinon from 'sinon';
 import { tokenToDate } from './utils';
 
-const dateFormat = 'YYYY-MM-DDTHH:mm:ssZ';
+const dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxx";
 const nowFaked = 1529311147000; // => 2018-06-18T08:39:07+00:00
 const fakeTimer = sinon.useFakeTimers(nowFaked);
 
