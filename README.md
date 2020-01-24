@@ -54,6 +54,10 @@ As you may have noticed, token follow a pattern:
   - Being today _15 Jan 2018_, the result range should be:
     _2018-01-01 00:00:00 / 2018-01-31 23:59:59_
 
+## Compatibilty
+
+- For node>=8.10 use datetoken==1.x.x
+- Otherwise use datetoken==0.x.x
 
 ## Installing
 
