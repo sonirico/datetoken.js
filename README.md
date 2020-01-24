@@ -1,4 +1,4 @@
-# Datetoken [![CircleCI](https://circleci.com/gh/sonirico/datetoken.js.svg?style=svg)](https://circleci.com/gh/sonirico/datetoken.js)
+# Datetoken [![CircleCI](https://circleci.com/gh/sonirico/datetoken.js.svg?style=svg)](https://circleci.com/gh/sonirico/datetoken.js) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=sonirico/datetoken.js)](https://dependabot.com)
 
 ## Motivation
 
