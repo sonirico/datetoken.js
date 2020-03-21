@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+## [1.0.1 - 2020-03-21]
+
+- Fixed security issues in 'acorn' and 'minimist' deps by
+  raising their versions
+
 ## [1.0.0 - 2020-01-24]
 
 - BREAKING CHANGE: support node versions >= 8.10
