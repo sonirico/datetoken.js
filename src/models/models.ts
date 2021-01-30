@@ -17,11 +17,11 @@ export class Token {
   }
 
   get isSnapped(): boolean {
-    return this.expressionNodes.some(node => node instanceof SnapExpression);
+    return this.expressionNodes.some((node) => node instanceof SnapExpression);
   }
 
   get isModified(): boolean {
-    return this.expressionNodes.some(node => node instanceof ModifierExpression);
+    return this.expressionNodes.some((node) => node instanceof ModifierExpression);
   }
 
   public static fromString(value: string, at?: Date): Token {
@@ -51,10 +51,10 @@ export class Token {
   }
 
   public toString(): string {
-    return this.expressionNodes.map(n => n.toString()).join('');
+    return this.expressionNodes.map((n) => n.toString()).join('');
   }
 
   public toJSON(): object[] {
-    return this.nodes.map(node => node.toJSON());
+    return this.nodes.map((node) => node.toJSON());
   }
 }

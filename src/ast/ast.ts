@@ -193,7 +193,7 @@ export class SnapExpression implements Expression {
 export namespace AmountModifiers {
   const values: string[] = ['s', 'm', 'h', 'd', 'w', 'M'];
 
-  export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
+  export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
 
   export function checkModifier(modifier: string) {
     return values.includes(modifier);
@@ -202,7 +202,7 @@ export namespace AmountModifiers {
 export namespace SnapModifiers {
   const values: string[] = ['s', 'm', 'h', 'd', 'w', 'bw', 'M', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-  export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
+  export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
 
   export function checkModifier(modifier: string) {
     return values.includes(modifier);
