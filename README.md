@@ -71,7 +71,7 @@ Most probably you will be dealing with simple presets such as _yesterday_ or
 the _last 24 hours_.
 
 ```node
->>> var tokenToDate = require('datetoken/utils').tokenToDate;
+>>> const tokenToDate = require('datetoken/utils').tokenToDate;
 >>> console.log(new Date())
 2018-10-18 14:08:47
 >>> tokenToDate('now-d/d')  # Start of yesterday
