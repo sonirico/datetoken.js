@@ -1,6 +1,6 @@
 {
   "name": "datetoken",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Parse relative datetime tokens into date objects",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
