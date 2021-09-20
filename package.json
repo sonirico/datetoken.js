@@ -48,6 +48,7 @@
     "date-fns": "^2.4.1"
   },
   "devDependencies": {
+    "set-value": ">=4.0.1",
     "@types/jest": "^27.0.0",
     "@types/sinon": "^10.0.0",
     "chai": "^4.2.0",
