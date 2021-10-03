@@ -19,8 +19,9 @@ describe('Token model', () => {
       new ModifierExpression(new Token(TokenType.MINUS, '-'), 99, '-', 'M'),
       new ModifierExpression(new Token(TokenType.MINUS, '-'), 2, '-', 'm'),
       new SnapExpression(new Token(TokenType.AT, '@'), 'd', '@'),
+      new SnapExpression(new Token(TokenType.SLASH, '/'), 'Y', '/'),
     ]);
-    expect(model.toString()).toBe('now+2h-1s/bw-99M-2m@d');
+    expect(model.toString()).toBe('now+2h-1s/bw-99M-2m@d/Y');
     expect(model.isSnapped).toBeTruthy();
     expect(model.isModified).toBeTruthy();
   });

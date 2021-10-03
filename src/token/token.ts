@@ -25,6 +25,7 @@ const keywords = {
   d: TokenType.MODIFIER,
   w: TokenType.MODIFIER,
   M: TokenType.MODIFIER,
+  Y: TokenType.MODIFIER,
   bw: TokenType.MODIFIER,
   mon: TokenType.MODIFIER,
   tue: TokenType.MODIFIER,

@@ -63,6 +63,8 @@ export class ModifierExpression implements Expression {
             return dateFn.addWeeks(date, this.amount);
           case 'M':
             return dateFn.addMonths(date, this.amount);
+          case 'Y':
+            return dateFn.addYears(date, this.amount);
         }
         break;
       case TokenType.MINUS:
@@ -79,6 +81,8 @@ export class ModifierExpression implements Expression {
             return dateFn.subWeeks(date, this.amount);
           case 'M':
             return dateFn.subMonths(date, this.amount);
+          case 'Y':
+            return dateFn.subYears(date, this.amount);
         }
         break;
     }
@@ -138,6 +142,8 @@ export class SnapExpression implements Expression {
           }
           case 'M':
             return dateFn.startOfMonth(date);
+          case 'Y':
+            return dateFn.startOfYear(date);
         }
         break;
       case TokenType.AT:
@@ -154,6 +160,8 @@ export class SnapExpression implements Expression {
             return dateFn.endOfWeek(date);
           case 'M':
             return dateFn.endOfMonth(date);
+          case 'Y':
+            return dateFn.endOfYear(date);
           case 'bw': {
             if (dateFn.isThisWeek(date) && !dateFn.isWeekend(date)) {
               return date;
@@ -191,7 +199,7 @@ export class SnapExpression implements Expression {
 }
 
 export namespace AmountModifiers {
-  const values: string[] = ['s', 'm', 'h', 'd', 'w', 'M'];
+  const values: string[] = ['s', 'm', 'h', 'd', 'w', 'M', 'Y'];
 
   export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
 
@@ -200,7 +208,7 @@ export namespace AmountModifiers {
   }
 }
 export namespace SnapModifiers {
-  const values: string[] = ['s', 'm', 'h', 'd', 'w', 'bw', 'M', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+  const values: string[] = ['s', 'm', 'h', 'd', 'w', 'bw', 'M', 'Y', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
   export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
 
