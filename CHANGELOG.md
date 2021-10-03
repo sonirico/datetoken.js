@@ -5,6 +5,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.3 - 2021-09-20]
+
+- Fixed security issues in 'set-value' deps by
+  raising their versions
+
+## [1.0.2 - 2020-01-30]
+
+- Maintenance relase: deps upgrade
+
 ## [1.0.1 - 2020-03-21]
 
 - Fixed security issues in 'acorn' and 'minimist' deps by
