@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0 - 2021-10-03]
+
+- Feat: Added support for years
+- Feat: Added support for quarters
+
 ## [1.0.3 - 2021-09-20]
 
 - Fixed security issues in 'set-value' deps by
