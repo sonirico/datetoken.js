@@ -86,7 +86,7 @@ export class Lexer {
 
   private readWord(): string {
     const pos = this.position;
-    while (isLetter(this.currentChar)) {
+    while (isLetter(this.currentChar) || isDigit(this.currentChar)) {
       this.readChar();
     }
     return this.input.substring(pos, this.position);

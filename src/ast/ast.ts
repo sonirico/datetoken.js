@@ -144,6 +144,18 @@ export class SnapExpression implements Expression {
             return dateFn.startOfMonth(date);
           case 'Y':
             return dateFn.startOfYear(date);
+          case 'Q':
+            const month = dateFn.getMonth(date);
+            const quarter = Math.floor(month / 3);
+            return dateFn.setMonth(dateFn.startOfYear(date), 3 * quarter);
+          case 'Q1':
+            return dateFn.startOfYear(date);
+          case 'Q2':
+            return dateFn.setMonth(dateFn.startOfYear(date), 4 - 1);
+          case 'Q3':
+            return dateFn.setMonth(dateFn.startOfYear(date), 7 - 1);
+          case 'Q4':
+            return dateFn.setMonth(dateFn.startOfYear(date), 10 - 1);
         }
         break;
       case TokenType.AT:
@@ -183,6 +195,18 @@ export class SnapExpression implements Expression {
             const delta = (((weekDayOrdinal - todayOrdinal) % 7) + 7) % 7;
             return dateFn.addDays(date, delta);
           }
+          case 'Q':
+            const month = dateFn.getMonth(date);
+            const quarter = Math.floor(month / 3);
+            return dateFn.endOfMonth(dateFn.setMonth(date, 3 * quarter + 2));
+          case 'Q1':
+            return dateFn.endOfMonth(dateFn.setMonth(date, 3 - 1));
+          case 'Q2':
+            return dateFn.endOfMonth(dateFn.setMonth(date, 6 - 1));
+          case 'Q3':
+            return dateFn.endOfMonth(dateFn.setMonth(date, 9 - 1));
+          case 'Q4':
+            return dateFn.endOfMonth(dateFn.setMonth(date, 12 - 1));
         }
         break;
     }
@@ -208,7 +232,28 @@ export namespace AmountModifiers {
   }
 }
 export namespace SnapModifiers {
-  const values: string[] = ['s', 'm', 'h', 'd', 'w', 'bw', 'M', 'Y', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+  const values: string[] = [
+    's',
+    'm',
+    'h',
+    'd',
+    'w',
+    'bw',
+    'M',
+    'Y',
+    'mon',
+    'tue',
+    'wed',
+    'thu',
+    'fri',
+    'sat',
+    'sun',
+    'Q',
+    'Q1',
+    'Q2',
+    'Q3',
+    'Q4',
+  ];
 
   export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
 

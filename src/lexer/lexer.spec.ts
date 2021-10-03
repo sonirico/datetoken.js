@@ -17,7 +17,7 @@ describe('Lexer', () => {
   });
 
   it('Lexer.nextToken tokenize ok', () => {
-    const input = 'now-1h/h@M+2w/bw+2d/mon-3s-49d/m@Y';
+    const input = 'now-1h/h@M+2w/bw+2d/mon-3s-49d/m@Y/Q/Q1/Q2/Q3/Q4';
     const lexer = new Lexer(input);
     const expected = [
       [TokenType.NOW, 'now'],
@@ -48,6 +48,16 @@ describe('Lexer', () => {
       [TokenType.MODIFIER, 'm'],
       [TokenType.AT, '@'],
       [TokenType.MODIFIER, 'Y'],
+      [TokenType.SLASH, '/'],
+      [TokenType.MODIFIER, 'Q'],
+      [TokenType.SLASH, '/'],
+      [TokenType.MODIFIER, 'Q1'],
+      [TokenType.SLASH, '/'],
+      [TokenType.MODIFIER, 'Q2'],
+      [TokenType.SLASH, '/'],
+      [TokenType.MODIFIER, 'Q3'],
+      [TokenType.SLASH, '/'],
+      [TokenType.MODIFIER, 'Q4'],
       [TokenType.END, ''],
     ];
     for (const expectedNode of expected) {
