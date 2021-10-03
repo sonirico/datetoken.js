@@ -67,6 +67,14 @@ describe('utils.tokenToDate', () => {
       // 61 = 30 (April) + 31 (May)
       expect(tokenToDate('now-2M').getTime()).toBe(nowFaked - 61 * 24 * 60 * 60 * 1000);
     });
+
+    it('can add years', () => {
+      expect(tokenToDate('now+2Y').getTime()).toBe(nowFaked + 2 * 365 * 24 * 60 * 60 * 1000 + 1 * 24 * 60 * 60 * 1000); // +1 leap year
+    });
+
+    it('can subtract years', () => {
+      expect(tokenToDate('now-2Y').getTime()).toBe(nowFaked - 2 * 365 * 24 * 60 * 60 * 1000);
+    });
   });
 
   describe('now with markers', () => {
@@ -169,6 +177,18 @@ describe('utils.tokenToDate', () => {
     it('understands the end of month', () => {
       const actual = format(tokenToDate('now@M'), dateFormat);
       const expected = '2018-06-30T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the start of a year', () => {
+      const actual = format(tokenToDate('now/Y'), dateFormat);
+      const expected = '2018-01-01T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the end of a year', () => {
+      const actual = format(tokenToDate('now@Y'), dateFormat);
+      const expected = '2018-12-31T23:59:59+00:00';
       expect(actual).toBe(expected);
     });
   });

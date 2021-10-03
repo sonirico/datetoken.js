@@ -24,7 +24,7 @@ describe('Parser', () => {
   }
 
   it('parse', () => {
-    const input = 'now-1h/h@M+2w/bw+2d/thu-3s-49d/m+5d@mon';
+    const input = 'now-1h/h@M+2w/bw+2d/thu-3s-49d/m+5d@mon@Y';
     const lexer = new Lexer(input);
     const parser = new Parser(lexer);
     const nodes = parser.parse();
@@ -42,6 +42,7 @@ describe('Parser', () => {
       { klazz: SnapExpression, modifier: 'm', operator: '/' },
       { klazz: ModifierExpression, amount: 5, modifier: 'd', operator: '+' },
       { klazz: SnapExpression, modifier: 'mon', operator: '@' },
+      { klazz: SnapExpression, modifier: 'Y', operator: '@' },
     ];
     checkParserErrors(expect, nodes, expected);
   });
