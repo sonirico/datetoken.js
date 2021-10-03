@@ -35,6 +35,7 @@ describe('Token model', () => {
       new ModifierExpression(new Token(TokenType.MINUS, '-'), 99, '-', 'M'),
       new ModifierExpression(new Token(TokenType.MINUS, '-'), 2, '-', 'm'),
       new SnapExpression(new Token(TokenType.AT, '@'), 'd', '@'),
+      new SnapExpression(new Token(TokenType.AT, '@'), 'Q', '@'),
     ]);
     const expected = [
       { type: 'now' },
@@ -44,6 +45,7 @@ describe('Token model', () => {
       { type: 'amount', amount: 99, modifier: 'M', operator: '-' },
       { type: 'amount', amount: 2, modifier: 'm', operator: '-' },
       { type: 'snap', modifier: 'd', operator: '@' },
+      { type: 'snap', modifier: 'Q', operator: '@' },
     ];
     expect(model.toJSON()).toStrictEqual(expected);
   });

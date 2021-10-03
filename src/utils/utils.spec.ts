@@ -191,6 +191,66 @@ describe('utils.tokenToDate', () => {
       const expected = '2018-12-31T23:59:59+00:00';
       expect(actual).toBe(expected);
     });
+
+    it('understands the start of this quarter', () => {
+      const actual = format(tokenToDate('now/Q'), dateFormat);
+      const expected = '2018-04-01T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the end of this quarter', () => {
+      const actual = format(tokenToDate('now@Q'), dateFormat);
+      const expected = '2018-06-30T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the start of Q1 (first quarter)', () => {
+      const actual = format(tokenToDate('now/Q1'), dateFormat);
+      const expected = '2018-01-01T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the end of Q1', () => {
+      const actual = format(tokenToDate('now@Q1'), dateFormat);
+      const expected = '2018-03-31T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the start of Q2 (second quarter)', () => {
+      const actual = format(tokenToDate('now/Q2'), dateFormat);
+      const expected = '2018-04-01T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the end of Q2', () => {
+      const actual = format(tokenToDate('now@Q2'), dateFormat);
+      const expected = '2018-06-30T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the start of Q3 (third quarter)', () => {
+      const actual = format(tokenToDate('now/Q3'), dateFormat);
+      const expected = '2018-07-01T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the end of Q3', () => {
+      const actual = format(tokenToDate('now@Q3'), dateFormat);
+      const expected = '2018-09-30T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the start of Q4 (fourth quarter)', () => {
+      const actual = format(tokenToDate('now/Q4'), dateFormat);
+      const expected = '2018-10-01T00:00:00+00:00';
+      expect(actual).toBe(expected);
+    });
+
+    it('understands the end of Q4', () => {
+      const actual = format(tokenToDate('now@Q4'), dateFormat);
+      const expected = '2018-12-31T23:59:59+00:00';
+      expect(actual).toBe(expected);
+    });
   });
 
   describe('now with offset and marker', () => {
