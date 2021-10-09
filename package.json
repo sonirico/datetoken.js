@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/sonirico/datetoken.js#readme",
   "dependencies": {
-    "date-fns": "^2.24.0"
+    "date-fns": "^2.25.0"
   },
   "devDependencies": {
     "@types/istanbul-lib-report": "^3.0.0",
