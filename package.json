@@ -55,7 +55,7 @@
     "node-notifier": "^10.0.0",
     "prettier": "^2.4.1",
     "set-value": ">=4.1.0",
-    "sinon": "^11.1.2",
+    "sinon": "^12.0.1",
     "ts-jest": "^27.0.5",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
