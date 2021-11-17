@@ -1,5 +1,11 @@
 # Datetoken [![CircleCI](https://circleci.com/gh/sonirico/datetoken.js.svg?style=svg)](https://circleci.com/gh/sonirico/datetoken.js) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=sonirico/datetoken.js)](https://dependabot.com)
 
+## Installing
+
+```shell
+npm i datetoken
+```
+
 ## Motivation
 
 This package aims to solve a set of needs present in applications where
@@ -66,12 +72,6 @@ As you may have noticed, token follow a pattern:
 
 - For node>=8.10 use datetoken==1.x.x
 - Otherwise use datetoken==0.x.x
-
-## Installing
-
-```shell
-npm i datetoken
-```
 
 ## Examples
 
