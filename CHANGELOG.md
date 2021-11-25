@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.2 - 2021-11-25]
+
+- No changes
+
+## [1.1.1 - 2021-11-25]
+
+- Fix: warning when importing cwd. @danirod
+
 ## [1.1.0 - 2021-10-03]
 
 - Feat: Added support for years
