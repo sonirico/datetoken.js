@@ -1,10 +1,14 @@
 import { format } from 'date-fns';
-import * as sinon from 'sinon';
-import { tokenToDate } from './utils';
+import { ClockI } from '../models';
+import { TestClock } from './time';
+import { tokenToDate as tokenToDateNative } from './utils';
 
 const dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxx";
 const nowFaked = 1529311147000; // => 2018-06-18T08:39:07+00:00
-const fakeTimer = sinon.useFakeTimers(nowFaked);
+
+function tokenToDate(datetoken: string, startAt?: Date, clock?: ClockI): Date {
+  return tokenToDateNative(datetoken, startAt, clock || TestClock.create(new Date(nowFaked)));
+}
 
 describe('utils.tokenToDate', () => {
   describe('now', () => {
@@ -149,7 +153,7 @@ describe('utils.tokenToDate', () => {
        * "business week to date" ranges from 17 to {nowFaked}
        */
       const actual = format(tokenToDate('now@bw'), dateFormat);
-      const expected = '2018-06-18T08:39:07+00:00';
+      const expected = '2018-06-22T23:59:59+00:00';
       expect(actual).toBe(expected);
     });
 
@@ -161,10 +165,9 @@ describe('utils.tokenToDate', () => {
        */
 
       // Saturday, 29 September 2018 9:40:25
-      const ft = sinon.useFakeTimers(1538214025000);
-      const actual = format(tokenToDate('now@bw'), dateFormat);
+      const clock = TestClock.create(new Date(1538214025000));
+      const actual = format(tokenToDate('now@bw', undefined, clock), dateFormat);
       const expected = '2018-09-28T23:59:59+00:00';
-      ft.restore();
       expect(actual).toBe(expected);
     });
 

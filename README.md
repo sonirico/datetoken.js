@@ -5,6 +5,20 @@
 ```shell
 npm i datetoken
 ```
+## Examples
+
+Most probably you will be dealing with simple presets such as _yesterday_ or
+the _last 24 hours_.
+
+```node
+>>> const datetoken = require('datetoken');
+>>> console.log(new Date())
+2018-10-18 14:08:47
+>>> datetoken('now-d/d')  # Start of yesterday
+2018-10-17 00:00:00
+>>> datetoken('now-d@d')  # End of yesterday
+2018-10-17 23:59:59
+```
 
 ## Motivation
 
@@ -72,21 +86,6 @@ As you may have noticed, token follow a pattern:
 
 - For node>=8.10 use datetoken==1.x.x
 - Otherwise use datetoken==0.x.x
-
-## Examples
-
-Most probably you will be dealing with simple presets such as _yesterday_ or
-the _last 24 hours_.
-
-```node
->>> const tokenToDate = require('datetoken/utils').tokenToDate;
->>> console.log(new Date())
-2018-10-18 14:08:47
->>> tokenToDate('now-d/d')  # Start of yesterday
-2018-10-17 00:00:00
->>> tokenToDate('now-d@d')  # End of yesterday
-2018-10-17 23:59:59
-```
 
 ## Issues
 

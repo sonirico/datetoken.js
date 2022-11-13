@@ -1,17 +1,20 @@
 import { format } from 'date-fns';
 import * as sinon from 'sinon';
-import { ModifierExpression, NowExpression, SnapExpression } from '../ast';
+import { Expression, ModifierExpression, NowExpression, SnapExpression } from '../ast';
 import { Token as TokenModel } from '../models';
 import { Token, TokenType } from '../token';
+import { TestClock } from '../utils/time';
 
 const dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxx";
 const nowFaked: number = 1529311147000;
-// 1529311147 => 2018-06-18T08:39:07+00:00
-const fakeTimer = sinon.useFakeTimers(nowFaked);
+
+function createTokenModel(tokens: Expression[]): TokenModel {
+  return new TokenModel(tokens, undefined, TestClock.create(new Date(nowFaked)));
+}
 
 describe('Token model', () => {
   it('toString()', () => {
-    const model = new TokenModel([
+    const model = createTokenModel([
       new NowExpression(new Token(TokenType.NOW, 'now')),
       new ModifierExpression(new Token(TokenType.PLUS, '+'), 2, '+', 'h'),
       new ModifierExpression(new Token(TokenType.MINUS, '-'), 1, '-', 's'),
@@ -27,7 +30,7 @@ describe('Token model', () => {
   });
 
   it('toJSON()', () => {
-    const model = new TokenModel([
+    const model = createTokenModel([
       new NowExpression(new Token(TokenType.NOW, 'now')),
       new ModifierExpression(new Token(TokenType.PLUS, '+'), 2, '+', 'h'),
       new ModifierExpression(new Token(TokenType.MINUS, '-'), 1, '-', 's'),
@@ -51,7 +54,7 @@ describe('Token model', () => {
   });
 
   it('<now> toDate()', () => {
-    const model = new TokenModel([new NowExpression(new Token(TokenType.NOW, 'now'))]);
+    const model = createTokenModel([new NowExpression(new Token(TokenType.NOW, 'now'))]);
     expect(model.isSnapped).toBeFalsy();
     expect(model.isModified).toBeFalsy();
     expect(model.toString()).toBe('now');
@@ -59,7 +62,7 @@ describe('Token model', () => {
   });
 
   it('<now/d> toDate()', () => {
-    const model = new TokenModel([
+    const model = createTokenModel([
       new NowExpression(new Token(TokenType.NOW, 'now')),
       new SnapExpression(new Token(TokenType.SLASH, '/'), 'd', '/'),
     ]);
@@ -70,7 +73,7 @@ describe('Token model', () => {
   });
 
   it('<now/d@d/d@d> toDate()', () => {
-    const model = new TokenModel([
+    const model = createTokenModel([
       new NowExpression(new Token(TokenType.NOW, 'now')),
       new SnapExpression(new Token(TokenType.SLASH, '/'), 'd', '/'),
       new SnapExpression(new Token(TokenType.AT, '@'), 'd', '@'),
@@ -83,7 +86,7 @@ describe('Token model', () => {
   });
 
   it("<+5s>, 'now' is optional, only one amount modifier", () => {
-    const model = new TokenModel([new ModifierExpression(new Token(TokenType.PLUS, '+'), 5, '+', 's')]);
+    const model = createTokenModel([new ModifierExpression(new Token(TokenType.PLUS, '+'), 5, '+', 's')]);
     expect(model.isSnapped).toBeFalsy();
     expect(model.isModified).toBeTruthy();
     expect(model.toString()).toBe('+5s');
@@ -92,7 +95,7 @@ describe('Token model', () => {
   });
 
   it("</d>, 'now' is optional, only one snap modifier", () => {
-    const model = new TokenModel([new SnapExpression(new Token(TokenType.SLASH, '/'), 'd', '/')]);
+    const model = createTokenModel([new SnapExpression(new Token(TokenType.SLASH, '/'), 'd', '/')]);
     expect(model.toString()).toBe('/d');
     expect(format(model.toDate(), dateFormat)).toBe('2018-06-18T00:00:00+00:00');
   });
@@ -111,7 +114,7 @@ describe('Token model', () => {
     });
 
     it('now is optional', () => {
-      const token = TokenModel.fromString('/d');
+      const token = TokenModel.fromString('/d', undefined, TestClock.create(new Date(nowFaked)));
       expect(token.isSnapped).toBeTruthy();
       expect(token.isModified).toBeFalsy();
       expect(token.nodes).toHaveLength(1);
