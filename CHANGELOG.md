@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.1.2 - 2021-11-25]
 
-- No changes
+- Fix(Security): bump minimatch version to >= 3.0.5
 
 ## [1.1.1 - 2021-11-25]
 
