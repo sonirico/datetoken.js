@@ -2,10 +2,15 @@ import { Expression, ModifierExpression, NowExpression, SnapExpression } from '.
 import { InvalidTokenError } from '../exceptions';
 import { Lexer } from '../lexer';
 import { Parser } from '../parser';
+import { Clock } from '../utils/time';
+
+export interface ClockI {
+  getTime(): Date;
+}
 
 export class Token {
   get at(): Date {
-    return this.startAt || new Date();
+    return this.startAt || this.clock.getTime();
   }
 
   set at(value: Date) {
@@ -24,7 +29,7 @@ export class Token {
     return this.expressionNodes.some((node) => node instanceof ModifierExpression);
   }
 
-  public static fromString(value: string, at?: Date): Token {
+  public static fromString(value: string, at?: Date, clock?: ClockI): Token {
     const lexer = new Lexer(value);
     const parser = new Parser(lexer);
     const nodes = parser.parse();
@@ -36,14 +41,19 @@ export class Token {
     if (at) {
       token.startAt = at;
     }
+    if (clock) {
+      token.clock = clock;
+    }
     return token;
   }
   private readonly expressionNodes: Expression[];
   private startAt?: Date;
+  private clock: ClockI = Clock.create();
 
-  constructor(nodes: Expression[], at?: Date) {
+  constructor(nodes: Expression[], at?: Date, clock: ClockI = Clock.create()) {
     this.expressionNodes = nodes;
     this.startAt = at;
+    this.clock = clock;
   }
 
   public toDate(): Date {
