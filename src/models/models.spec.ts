@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import * as sinon from 'sinon';
 import { Expression, ModifierExpression, NowExpression, SnapExpression } from '../ast';
 import { Token as TokenModel } from '../models';
 import { Token, TokenType } from '../token';
