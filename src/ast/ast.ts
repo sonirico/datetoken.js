@@ -225,7 +225,7 @@ export class SnapExpression implements Expression {
 export namespace AmountModifiers {
   const values: string[] = ['s', 'm', 'h', 'd', 'w', 'M', 'Y'];
 
-  export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
+  export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
 
   export function checkModifier(modifier: string) {
     return values.includes(modifier);
@@ -255,7 +255,7 @@ export namespace SnapModifiers {
     'Q4',
   ];
 
-  export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
+  export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
 
   export function checkModifier(modifier: string) {
     return values.includes(modifier);
