@@ -20,8 +20,9 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": true
+    "allowImportingTsExtensions": false,
+    "noEmit": false
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.test.ts"]
+  "include": ["src/**/*.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
+  "exclude": ["node_modules", "dist", "dist-cjs"]
 }

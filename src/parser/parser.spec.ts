@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
+import { Parser } from './parser';
 import type { Expression } from '../ast';
 import { ModifierExpression, NowExpression, SnapExpression } from '../ast';
 import { Lexer } from '../lexer';
-import { Parser } from '../parser';
 
 describe('Parser', () => {
   function checkParserErrors(expectFn: any, actualNodes: Expression[], expectedNodes: any[]) {

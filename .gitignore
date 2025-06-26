@@ -45,3 +45,6 @@ pids
 tmp/
 temp/
 
+
+src/**/*.js
+src/**/*.d.ts

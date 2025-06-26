@@ -35,3 +35,8 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Test ES module import
+        run: |
+          echo "Testing ES module import..."
+          node -e "import('./dist/index.js').then(m => console.log('Module loaded successfully:', typeof m.default))"

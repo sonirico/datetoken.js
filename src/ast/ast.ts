@@ -1,5 +1,5 @@
 import * as dateFn from 'date-fns';
-import { Token, TokenType } from '../token';
+import { Token, TokenType } from '../token/index.js';
 
 const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 

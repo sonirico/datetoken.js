@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "./dist-cjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "noEmit": false,
+    "emitDeclarationOnly": false,
+    "jsx": "preserve",
+    "target": "ES2020",
+    "allowJs": false,
+    "checkJs": false,
+    "sourceMap": false,
+    "declarationMap": false,
+    "removeComments": false,
+    "rootDir": "./src"
+  }
+}

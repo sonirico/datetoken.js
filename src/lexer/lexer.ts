@@ -1,4 +1,4 @@
-import { lookupIdentifier, Token, TokenType } from '../token';
+import { lookupIdentifier, Token, TokenType } from '../token/index.js';
 
 function isDigit(payload: string): boolean {
   return /^\d+$/.test(payload);

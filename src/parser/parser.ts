@@ -1,8 +1,8 @@
-import type { Expression } from '../ast';
-import { AmountModifiers, ModifierExpression, NowExpression, SnapExpression, SnapModifiers } from '../ast';
-import { newNowExpression } from '../ast';
-import { Lexer } from '../lexer';
-import { Token, TokenType } from '../token';
+import type { Expression } from '../ast/index.js';
+import { AmountModifiers, ModifierExpression, NowExpression, SnapExpression, SnapModifiers } from '../ast/index.js';
+import { newNowExpression } from '../ast/index.js';
+import { Lexer } from '../lexer/index.js';
+import { Token, TokenType } from '../token/index.js';
 
 export class Parser {
   private lexer: Lexer;

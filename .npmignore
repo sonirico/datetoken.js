@@ -1,5 +1,11 @@
 src
+src/**/*.js
+src/**/*.d.ts
 tsconfig.json
+tsconfig.cjs.json
+tsconfig.esm.json
 tslint.json
 .prettierrc
 .idea
+scripts
+*.spec.*

@@ -1,9 +1,9 @@
-import type { Expression } from '../ast';
-import { ModifierExpression, NowExpression, SnapExpression } from '../ast';
-import { InvalidTokenError } from '../exceptions';
-import { Lexer } from '../lexer';
-import { Parser } from '../parser';
-import { Clock } from '../utils/time';
+import type { Expression } from '../ast/index.js';
+import { ModifierExpression, NowExpression, SnapExpression } from '../ast/index.js';
+import { InvalidTokenError } from '../exceptions/index.js';
+import { Lexer } from '../lexer/index.js';
+import { Parser } from '../parser/index.js';
+import { Clock } from '../utils/time.js';
 
 export interface ClockI {
   getTime(): Date;
@@ -71,3 +71,5 @@ export class Token {
     return this.nodes.map(node => node.toJSON());
   }
 }
+
+export { Token as TokenModel };
