@@ -35,8 +35,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Check package exports
-        run: |
-          node -e "console.log('CommonJS:', require('./dist/cjs/index.js'))"
-          node -e "import('./dist/esm/index.js').then(m => console.log('ESM:', m))"

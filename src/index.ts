@@ -1,6 +1,6 @@
-import { tokenToDate } from './utils';
+import { tokenToDate } from './utils/index.js';
 
-export { Token } from './models';
+export { Token } from './models/index.js';
 
 export const datetoken = tokenToDate;
 
