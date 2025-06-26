@@ -1,5 +1,7 @@
+import { describe, it, expect } from 'vitest';
 import { format } from 'date-fns';
-import { Expression, ModifierExpression, NowExpression, SnapExpression } from '../ast';
+import type { Expression } from '../ast';
+import { ModifierExpression, NowExpression, SnapExpression } from '../ast';
 import { Token as TokenModel } from '../models';
 import { Token, TokenType } from '../token';
 import { TestClock } from '../utils/time';
