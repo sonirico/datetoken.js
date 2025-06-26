@@ -63,7 +63,7 @@ export class Lexer {
       this.readPosition = 0;
       this.currentChar = '';
     } else {
-      this.currentChar = this.input[this.readPosition];
+      this.currentChar = this.input[this.readPosition] ?? '';
       this.position = this.readPosition;
     }
     this.readPosition++;
@@ -73,7 +73,7 @@ export class Lexer {
     if (this.position >= this.input.length) {
       return '';
     }
-    return this.input[this.readPosition];
+    return this.input[this.readPosition] ?? '';
   }
 
   private readNumber(): string {

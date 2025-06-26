@@ -1,4 +1,5 @@
-import { AmountModifiers, Expression, ModifierExpression, NowExpression, SnapExpression, SnapModifiers } from '../ast';
+import type { Expression } from '../ast';
+import { AmountModifiers, ModifierExpression, NowExpression, SnapExpression, SnapModifiers } from '../ast';
 import { newNowExpression } from '../ast';
 import { Lexer } from '../lexer';
 import { Token, TokenType } from '../token';
@@ -6,8 +7,8 @@ import { Token, TokenType } from '../token';
 export class Parser {
   private lexer: Lexer;
   private readonly errors: string[];
-  private currentToken?: Token;
-  private peekToken?: Token;
+  private currentToken: Token | undefined;
+  private peekToken: Token | undefined;
 
   constructor(lexer: Lexer) {
     this.errors = [];

@@ -1,14 +1,16 @@
-import { Expression, ModifierExpression, NowExpression, SnapExpression } from '../ast';
+import { describe, it, expect } from 'vitest';
+import type { Expression } from '../ast';
+import { ModifierExpression, NowExpression, SnapExpression } from '../ast';
 import { Lexer } from '../lexer';
 import { Parser } from '../parser';
 
 describe('Parser', () => {
-  function checkParserErrors(expect: jest.Expect, actualNodes: Expression[], expectedNodes: any[]) {
-    expect(actualNodes.length).toBe(expectedNodes.length);
+  function checkParserErrors(expectFn: any, actualNodes: Expression[], expectedNodes: any[]) {
+    expectFn(actualNodes.length).toBe(expectedNodes.length);
     for (let i = 0, len = expectedNodes.length; i < len; i++) {
       const actual = actualNodes[i];
       const expected = expectedNodes[i];
-      expect(actual).toBeInstanceOf(expected.klazz);
+      expectFn(actual).toBeInstanceOf(expected.klazz);
       switch (expected.klazz) {
         case ModifierExpression:
           expect((actual as ModifierExpression).amount).toBe(expected.amount);

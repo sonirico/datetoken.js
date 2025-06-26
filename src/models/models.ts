@@ -1,4 +1,5 @@
-import { Expression, ModifierExpression, NowExpression, SnapExpression } from '../ast';
+import type { Expression } from '../ast';
+import { ModifierExpression, NowExpression, SnapExpression } from '../ast';
 import { InvalidTokenError } from '../exceptions';
 import { Lexer } from '../lexer';
 import { Parser } from '../parser';
@@ -52,7 +53,9 @@ export class Token {
 
   constructor(nodes: Expression[], at?: Date, clock: ClockI = Clock.create()) {
     this.expressionNodes = nodes;
-    this.startAt = at;
+    if (at !== undefined) {
+      this.startAt = at;
+    }
     this.clock = clock;
   }
 

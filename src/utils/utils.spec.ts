@@ -1,5 +1,6 @@
+import { describe, it, expect } from 'vitest';
 import { format } from 'date-fns';
-import { ClockI } from '../models';
+import type { ClockI } from '../models';
 import { TestClock } from './time';
 import { tokenToDate as tokenToDateNative } from './utils';
 
@@ -352,8 +353,13 @@ describe('utils.tokenToDate', () => {
 
   it('now-1w+3d-6m', () => {
     const actual = tokenToDate('now-1w+3d-6m');
-    const delta = (-(7 * 24 * 3600) + 3 * 24 * 3600 - 6 * 60) * 1000;
-    expect(actual.getTime()).toBe(nowFaked + delta);
+    // Instead of calculating manually, let's build the expected result step by step
+    // using the same date-fns operations that the code uses
+    const startDate = new Date(nowFaked);
+    const afterWeek = new Date(startDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const afterDays = new Date(afterWeek.getTime() + 3 * 24 * 60 * 60 * 1000);
+    const expected = new Date(afterDays.getTime() - 6 * 60 * 1000);
+    expect(actual.getTime()).toBe(expected.getTime());
   });
 
   describe('starting date can be configured', () => {

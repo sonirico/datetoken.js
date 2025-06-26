@@ -52,7 +52,7 @@ export class Token {
 
 export function lookupIdentifier(ident: string): TokenType {
   if (keywords.hasOwnProperty(ident)) {
-    return keywords[ident];
+    return keywords[ident] ?? TokenType.ILLEGAL;
   }
   return TokenType.ILLEGAL;
 }
