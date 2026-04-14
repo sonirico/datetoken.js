@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
 import { format } from 'date-fns';
+import { describe, expect, it } from 'vitest';
 import type { ClockI } from '../models';
 import { TestClock } from './time';
 import { tokenToDate as tokenToDateNative } from './utils';

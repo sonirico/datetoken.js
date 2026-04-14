@@ -51,7 +51,7 @@ export class Token {
 }
 
 export function lookupIdentifier(ident: string): TokenType {
-  if (keywords.hasOwnProperty(ident)) {
+  if (Object.hasOwn(keywords, ident)) {
     return keywords[ident] ?? TokenType.ILLEGAL;
   }
   return TokenType.ILLEGAL;

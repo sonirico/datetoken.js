@@ -144,10 +144,11 @@ export class SnapExpression implements Expression {
             return dateFn.startOfMonth(date);
           case 'Y':
             return dateFn.startOfYear(date);
-          case 'Q':
+          case 'Q': {
             const month = dateFn.getMonth(date);
             const quarter = Math.floor(month / 3);
             return dateFn.setMonth(dateFn.startOfYear(date), 3 * quarter);
+          }
           case 'Q1':
             return dateFn.startOfYear(date);
           case 'Q2':
@@ -195,10 +196,11 @@ export class SnapExpression implements Expression {
             const delta = (((weekDayOrdinal - todayOrdinal) % 7) + 7) % 7;
             return dateFn.addDays(date, delta);
           }
-          case 'Q':
+          case 'Q': {
             const month = dateFn.getMonth(date);
             const quarter = Math.floor(month / 3);
             return dateFn.endOfMonth(dateFn.setMonth(date, 3 * quarter + 2));
+          }
           case 'Q1':
             return dateFn.endOfMonth(dateFn.setMonth(date, 3 - 1));
           case 'Q2':
@@ -225,7 +227,7 @@ export class SnapExpression implements Expression {
 export namespace AmountModifiers {
   const values: string[] = ['s', 'm', 'h', 'd', 'w', 'M', 'Y'];
 
-  export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
+  export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
 
   export function checkModifier(modifier: string) {
     return values.includes(modifier);
@@ -255,7 +257,7 @@ export namespace SnapModifiers {
     'Q4',
   ];
 
-  export const valuesString = `(${values.map(v => `"${v}"`).join(',')})`;
+  export const valuesString = `(${values.map((v) => `"${v}"`).join(',')})`;
 
   export function checkModifier(modifier: string) {
     return values.includes(modifier);

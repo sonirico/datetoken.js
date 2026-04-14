@@ -1,8 +1,14 @@
 import type { Expression } from '../ast/index.js';
-import { AmountModifiers, ModifierExpression, NowExpression, SnapExpression, SnapModifiers } from '../ast/index.js';
-import { newNowExpression } from '../ast/index.js';
-import { Lexer } from '../lexer/index.js';
-import { Token, TokenType } from '../token/index.js';
+import {
+  AmountModifiers,
+  ModifierExpression,
+  type NowExpression,
+  newNowExpression,
+  SnapExpression,
+  SnapModifiers,
+} from '../ast/index.js';
+import type { Lexer } from '../lexer/index.js';
+import { type Token, TokenType } from '../token/index.js';
 
 export class Parser {
   private lexer: Lexer;
@@ -32,7 +38,7 @@ export class Parser {
     const nodes: Expression[] = [];
     this.nextToken();
     this.nextToken();
-    while (this.currentToken!.type !== TokenType.END) {
+    while (this.currentToken?.type !== TokenType.END) {
       const node = this.parseExpression();
       if (node) {
         nodes.push(node);

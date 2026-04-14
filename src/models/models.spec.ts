@@ -1,11 +1,10 @@
-import { describe, it, expect } from 'vitest';
 import { format } from 'date-fns';
+import { describe, expect, it } from 'vitest';
 import type { Expression } from '../ast';
 import { ModifierExpression, NowExpression, SnapExpression } from '../ast';
-import { TokenType } from '../token';
-import { Token } from '../token';
-import { TestClock } from '../utils/time';
 import { TokenModel } from '../models';
+import { Token, TokenType } from '../token';
+import { TestClock } from '../utils/time';
 
 const dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxx";
 const nowFaked: number = 1529311147000;

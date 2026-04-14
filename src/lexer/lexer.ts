@@ -69,13 +69,6 @@ export class Lexer {
     this.readPosition++;
   }
 
-  private peekChar(): string {
-    if (this.position >= this.input.length) {
-      return '';
-    }
-    return this.input[this.readPosition] ?? '';
-  }
-
   private readNumber(): string {
     const pos = this.position;
     while (isDigit(this.currentChar)) {

@@ -3,7 +3,7 @@ export class Clock {
     return new Date();
   }
 
-  public forward(millis: number): Date {
+  public forward(_millis: number): Date {
     return new Date();
   }
 
@@ -23,7 +23,8 @@ export class TestClock {
   }
 
   public forward(millis: number): Date {
-    return (this.now = new Date(this.now.getTime() + millis));
+    this.now = new Date(this.now.getTime() + millis);
+    return this.now;
   }
 
   public static create(now: Date): TestClock {
