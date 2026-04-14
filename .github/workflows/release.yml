@@ -45,7 +45,7 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           git add package.json package-lock.json
           git commit -m "v${VERSION}"
-          git tag "v${VERSION}"
+          git tag -a "v${VERSION}" -m "v${VERSION}"
           git push --follow-tags
 
       - name: Publish to npm
