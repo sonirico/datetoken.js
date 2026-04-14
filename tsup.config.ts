@@ -9,6 +9,6 @@ export default defineConfig({
   splitting: false,
   sourcemap: false,
   minify: false,
-  target: 'node18',
+  target: 'node20',
   shims: false,
 });
