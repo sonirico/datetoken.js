@@ -6,11 +6,7 @@
 A small DSL to express relative dates as tokens. Parse `now-1d/d` into a `Date` instead of
 hand-rolling arithmetic with `Date.now() - 86400000`.
 
-Also available in:
-
-- [Python](https://github.com/sonirico/datetoken).
-- [Go](https://github.com/sonirico/datetoken.go).
-- [Nim?](https://github.com/fernando24164/datetoken.nim).
+Also available in [Python](https://github.com/sonirico/datetoken), [Go](https://github.com/sonirico/datetoken.go) and ... [Nim?](https://github.com/fernando24164/datetoken.nim)
 
 ## Install
 
