@@ -1,6 +1,6 @@
 {
   "name": "datetoken",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "description": "Parse relative datetime tokens into date objects",
   "type": "module",
   "main": "./dist/index.cjs",
