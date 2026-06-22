@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.11",
-    "@types/node": "^25.0.0",
+    "@types/node": "^26.0.0",
     "rimraf": "^6.0.0",
     "tsup": "^8.5.0",
     "typescript": "^6.0.2",
