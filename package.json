@@ -67,7 +67,7 @@
     "@types/node": "^26.0.0",
     "rimraf": "^6.0.0",
     "tsup": "^8.5.0",
-    "typescript": "^6.0.2",
+    "typescript": "^7.0.2",
     "vitest": "^4.0.1"
   },
   "typesVersions": {
