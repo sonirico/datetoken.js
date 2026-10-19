@@ -66,7 +66,7 @@
     "@biomejs/biome": "^2.4.11",
     "@types/node": "^26.0.0",
     "rimraf": "^6.0.0",
-    "tsup": "^8.5.0",
+    "tsup": "^9.0.0",
     "typescript": "^6.0.2",
     "vitest": "^5.0.0"
   },
